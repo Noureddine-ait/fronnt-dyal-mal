@@ -1,0 +1,28 @@
+
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <table class=" table table-striped table hover">
+      <thead>
+      <th>ID</th>
+      <th>REF</th>
+      <th>TITRE</th>
+      <th>DESCRIPTION</th>
+      <th>ACTION</th>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let p of playlistes;index as i">
+        <td>{{p.id}} </td>
+        <td>{{p.ref}}</td>
+        <td>{{p.titre}}</td>
+        <td>{{p.description}}</td>
+        <td><span (click)="delete(i) "><i class="fa fa-trash btn  btn-danger"> </i></span></td>
+        <td><span (click)="update(i,p) "><i class="fa fa-edit btn   btn-warning"> </i></span></td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer"></div>
+</div>
