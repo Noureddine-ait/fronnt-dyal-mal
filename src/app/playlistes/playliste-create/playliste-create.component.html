@@ -1,0 +1,27 @@
+
+<div class="card">
+  <div class="card-header">
+ CREATION DE PLAYLISTE
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label >REF</label>
+      <input type="text" class="form-control" [(ngModel)] ="playliste.ref">
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label >Titre</label>
+        <input type="text" class="form-control" [(ngModel)] ="playliste.titre">
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label >description</label>
+          <input type="text" class="form-control" [(ngModel)] ="playliste.description">
+        </div>
+
+      </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="save()"> CREER</button>
+
+  </div>
+</div>
