@@ -10,14 +10,14 @@ export class VideoService {
   private index: number;
   public save() {
      if (this.video.id == null){
-      this.video.id= this.videos.length + 1;
-    this.videos.push(this.cloneVideo(this.video));
+      this.video.id = this.videos.length + 1;
+      this.videos.push(this.cloneVideo(this.video));
     }else {
       this.videos[this.index] = this.cloneVideo(this.video);
     }
-    this.video = null;
+     this.video = null;
   }
-  public update(index: number,v: Video){
+  public update(index: number, v: Video){
     this.video = this.cloneVideo(v);
     this.index = index;
   }
@@ -47,21 +47,20 @@ export class VideoService {
     this._videos = value;
   }
   public init(){
-for (var _i=1; _i<=3; _i++){
-let myVideo = new Video();
-myVideo.id=_i;
-myVideo.reference ="ref-" + _i;
-myVideo.titre = "title-" + _i;
-myVideo.description = "desc_" +_i;
-myVideo.tags = "tag-" + _i;
-myVideo.dateUpload = "2"+_i+"/03/2021";
+for (let _i = 1; _i <= 3; _i++){
+const myVideo = new Video();
+myVideo.id = _i;
+myVideo.ref = 'ref-' + _i;
+myVideo.titre = 'title-' + _i;
+myVideo.description = 'desc_' + _i;
+myVideo.tags = 'tag-' + _i;
+myVideo.dateUpload = '2' + _i + '/03/2021';
 this.videos.push(myVideo);
 }
   }
-
   private cloneVideo(video: Video) {
     const myClone = new Video();
-    myClone.reference = video.reference;
+    myClone.ref = video.ref;
  /*   myClone.path = video.path;
     myClone.url = video.url;*/
    // myClone.totalVue = video.totalVue;
