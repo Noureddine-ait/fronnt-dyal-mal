@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Playliste} from '../../controller/model/playliste.model';
-import {CommandeService} from '../../controller/service/commande.service';
+import {PlayListeService} from '../../controller/service/playListe.service';
 
 @Component({
   selector: 'app-playliste-liste',
@@ -12,18 +12,18 @@ export class PlaylisteListeComponent implements OnInit {
 
 public update(index: number, playliste: Playliste){
 
-  this.commandeService.update(index,playliste);
+  this.playlisteService.update(index, playliste );
 }
   // tslint:disable-next-line:typedef
   public delete(index: number){
     this.playlistes.splice(index, 1);
   }
-  constructor( private commandeService: CommandeService) { }
+  constructor( private playlisteService: PlayListeService) { }
   get playlistes(): Array<Playliste> {
-    return this.commandeService.playlistes;
+    return this.playlisteService.playlistes;
   }
  ngOnInit(): void {
-    this.commandeService.init();
+    this.playlisteService.init();
   }
 
 }

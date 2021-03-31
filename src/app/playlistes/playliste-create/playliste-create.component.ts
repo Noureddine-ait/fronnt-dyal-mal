@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Playliste} from '../../controller/model/playliste.model';
-import {CommandeService} from '../../controller/service/commande.service';
+import {PlayListeService} from '../../controller/service/playListe.service';
 
 @Component({
   selector: 'app-playliste-create',
@@ -10,13 +10,13 @@ import {CommandeService} from '../../controller/service/commande.service';
 })
 export class PlaylisteCreateComponent implements OnInit {
 
-  constructor(private commandeService: CommandeService) { }
+  constructor(private playListeService: PlayListeService) { }
   get playliste(): Playliste {
-    return this.commandeService.playliste;
+    return this.playListeService.playliste;
   }
   // tslint:disable-next-line:typedef
   public save(){
-    this.commandeService.save();
+    this.playListeService.save();
   }
 
   ngOnInit(): void {

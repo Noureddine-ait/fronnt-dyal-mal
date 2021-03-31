@@ -1,3 +1,5 @@
+import {Playliste} from './playliste.model';
+
 export class Video {
   public id: number;
   public ref: string;
@@ -10,5 +12,6 @@ export class Video {
   public totalVue: number;
   public url: string;
   public path: string;
+  public playListe: Playliste;
 
 }

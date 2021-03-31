@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Video} from '../model/video.model';
+import {Playliste} from '../model/playliste.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +9,21 @@ import {Video} from '../model/video.model';
 export class VideoService {
   private _video: Video;
   private _videos: Array<Video>;
+  private _playListe: Playliste;
+  private _urlBase = 'http://localhost:8036';
+  private _url = '/gestion-video/video';
   private index: number;
   public save() {
      if (this.video.id == null){
-      this.video.id = this.videos.length + 1;
-      this.videos.push(this.cloneVideo(this.video));
+      this.http.post(this.urlBase + this.url + '/', this.video ).subscribe(
+        data => {
+          if (data > 1){
+          this.videos.push(this.cloneVideo(this.video)); }else {
+            alert('error accrues during the creation ' + data);
+          }
+        }
+      );
+
     }else {
       this.videos[this.index] = this.cloneVideo(this.video);
     }
@@ -22,7 +34,31 @@ export class VideoService {
     this.index = index;
   }
 
-  constructor() {
+  constructor(private http: HttpClient ) {
+  }
+
+  get urlBase(): string {
+    return this._urlBase;
+  }
+
+  set urlBase(value: string) {
+    this._urlBase = value;
+  }
+
+  get url(): string {
+    return this._url;
+  }
+
+  set url(value: string) {
+    this._url = value;
+  }
+
+  get playListe(): Playliste {
+    return this._playListe;
+  }
+
+  set playListe(value: Playliste) {
+    this._playListe = value;
   }
 
   get video(): Video {
@@ -47,26 +83,23 @@ export class VideoService {
     this._videos = value;
   }
   public init(){
-for (let _i = 1; _i <= 3; _i++){
-const myVideo = new Video();
-myVideo.id = _i;
-myVideo.ref = 'ref-' + _i;
-myVideo.titre = 'title-' + _i;
-myVideo.description = 'desc_' + _i;
-myVideo.tags = 'tag-' + _i;
-myVideo.dateUpload = '2' + _i + '/03/2021';
-this.videos.push(myVideo);
-}
+this.http.get<Array<Video>>('http://localhost:8036/gestion-video/video/').subscribe(
+   data => {
+      this.videos = data;
+  }, error  => {
+     console.log(error);
+  }
+);
   }
   private cloneVideo(video: Video) {
     const myClone = new Video();
     myClone.ref = video.ref;
- /*   myClone.path = video.path;
-    myClone.url = video.url;*/
-   // myClone.totalVue = video.totalVue;
+    myClone.path = video.path;
+    myClone.url = video.url;
+    myClone.totalVue = video.totalVue;
     myClone.description = video.description;
-   /* myClone.dislikes = video.dislikes;
-    myClone.likes = video.likes;*/
+    myClone.dislikes = video.dislikes;
+    myClone.likes = video.likes;
     myClone.dateUpload = video.dateUpload;
     myClone.tags = video.tags;
     myClone.titre = video.titre;
