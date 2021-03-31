@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Chaine} from '../model/chaine.model';
+import {HttpClient} from '@angular/common/http';
+import {url} from 'inspector';
+import {subscribeOn} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChaineService {
+  private urlBase = 'http://localhost:8036';
+  private url = '/chaine-youtube/';
   private _chaine: Chaine;
   private _chaines: Array<Chaine>;
   private _indice: number;
@@ -18,35 +23,42 @@ export class ChaineService {
   // tslint:disable-next-line:typedef
   public save() {
     if (this.chaine.id == null) {
-      this.chaine.id = this.chaines.length + 1;
-      this.chaines.push(this.clone(this.chaine));
+      // this.chaine.id = this.chaines.length + 1;
+      this.http.post(this.urlBase + this.url + '/', this.chaine).subscribe(
+        data => {
+          if (data > 0){
+            console.log(this.chaine);
+            const myClone = this.clone(this.chaine);
+            console.log(myClone);
+            // this.chaines.push(myClone);
+            this.findAll();
+          }else {
+            alert('erreur lors de la creation de la chaine code :' + data);
+          }
+        }
+
+      );
+
     } else {
       this.chaines[this._indice] = this.clone(this.chaine);
     }
     this.chaine = null;
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
 // tslint:disable-next-line:typedef
-  public init() {
-    // tslint:disable-next-line:variable-name
-    for (let _i = 1; _i < 5; _i++) {
-
-      const myChaine = new Chaine();
-      myChaine.id = _i;
-      myChaine.ref = 'c-' + _i;
-      myChaine.titre = 'chaine11' + _i;
-      myChaine.descreption = 'gaming' + _i;
-      myChaine.nombreAbonnee = 5000 + _i;
-      myChaine.login = 'gamer163 ' + _i;
-      myChaine.password = '123456f' + _i;
-
-      this.chaines.push(myChaine);
-    }
+  public findAll() {
+this.http.get<Array<Chaine>>(this.urlBase + this.url + '/').subscribe(
+  data => {
+    this.chaines = data ;
+  }, error => {
+    console.log(error);
   }
+);
 
+    }
   get chaine(): Chaine {
 
     if (this._chaine == null) {

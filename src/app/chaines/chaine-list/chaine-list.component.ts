@@ -24,7 +24,7 @@ export class ChaineListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.chaineService.init();
+    this.chaineService.findAll();
   }
 
   get chaines(): Array<Chaine> {
