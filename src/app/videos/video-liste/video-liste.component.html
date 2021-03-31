@@ -8,26 +8,26 @@
       <th>Description</th>
       <th>Tags</th>
       <th>Date Upload</th>
-     <!-- <th>Likes</th>
+     <th>Likes</th>
       <th>Dislikes</th>
       <th>Total Vue</th>
       <th>URL</th>
-      <th>Path</th>-->
+      <th>Path</th>
       <th>Action</th>
       <th>Update</th>
       </thead>
       <tbody>
       <tr *ngFor="let v of videos index as i">
-        <td>{{v.reference}}</td>
+        <td>{{v.ref}}</td>
         <td>{{v.titre}}</td>
         <td>{{v.description}}</td>
         <td>{{v.tags}}</td>
         <td>{{v.dateUpload}}</td>
-     <!--   <td>{{v.likes}}</td>
-        <td>{{v.dislikes}}</td>-->
-      <!--  <td>{{v.totalVue}}</td>
+      <td>{{v.likes}}</td>
+        <td>{{v.dislikes}}</td>
+        <td>{{v.totalVue}}</td>
         <td>{{v.url}}</td>
-        <td>{{v.path}}</td>-->
+        <td>{{v.path}}</td>
         <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i></span></td>
         <td><span (click)="update(i,v)"><i class="fa fa-edit btn btn-warning"></i></span></td>
       </tr>
@@ -39,4 +39,6 @@
       </tbody>
     </table>
   </div>
+  <!--<nav><a class="" routerLink="playlistes/playliste-create" routerLinkActive="active">PlayListe</a></nav>
+  <router-outlet></router-outlet>-->
 </div>

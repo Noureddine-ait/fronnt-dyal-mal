@@ -4,7 +4,7 @@ import {Playliste} from '../model/playliste.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CommandeService {
+export class PlayListeService {
 private _playliste: Playliste;
 private _playlistes: Array<Playliste>;
   private _index: number;
@@ -39,8 +39,6 @@ get playlistes(): Array<Playliste> {
     if (this._playlistes == null){ this._playlistes = new Array<Playliste>(); }
     return this._playlistes;
   }
-
-
 
 
   private clone(playliste: Playliste) {

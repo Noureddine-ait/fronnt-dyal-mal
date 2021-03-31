@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <label>Ref</label>
-      <input type="text" class="form-control" [(ngModel)]="video.reference">
+      <input type="text" class="form-control" [(ngModel)]="video.ref">
     </div>
     <div class="form-group">
       <label>Titre</label>
@@ -24,7 +24,7 @@
       <label>Date Uploads</label>
       <input type="text" class="form-control" [(ngModel)]="video.dateUpload">
     </div>
- <!--   <div class="form-group">
+   <div class="form-group">
       <label>Likes</label>
       <input type="number" class="form-control" [(ngModel)]="video.likes">
     </div>
@@ -45,12 +45,16 @@
     <div class="form-group">
       <label>Totale Views</label>
       <input type="number" class="form-control" [(ngModel)]="video.totalVue">
-    </div>-->
+    </div>
 
   </div>
   <div class="card-footer">
     <button class="btn btn-outline-dark btn-block" (click)="save()">save</button>
   </div>
+  <div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+    </div></div>
 
 </div>
 
