@@ -10,6 +10,7 @@ import {ChaineService} from '../../controller/service/chaine.service';
 export class ChaineListComponent implements OnInit {
 
 
+  // tslint:disable-next-line:typedef
   public update(index: number, chaine: Chaine) {
     this.chaineService.update(index, chaine);
   }
