@@ -12,11 +12,13 @@ export class VideoListeComponent implements OnInit {
   constructor(private videoService: VideoService) { }
 
   ngOnInit(): void {
-    this.videoService.init();
+    this.videoService.findAll();
   }
+  // tslint:disable-next-line:typedef
   public delete(index: number){
     this.videos.splice(index, 1 );
   }
+  // tslint:disable-next-line:typedef
   public update(index: number, v: Video ){
     this.videoService.update(index, v );
   }

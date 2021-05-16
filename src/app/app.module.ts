@@ -1,45 +1,27 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { VideosComponent } from './videos/videos.component';
-import { VideoCreateComponent } from './videos/video-create/video-create.component';
-import { VideoListeComponent } from './videos/video-liste/video-liste.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {PlaylistesComponent} from './playlistes/playlistes.component';
-import { AppRoutingModule } from './app-routing.module';
-import {PlaylisteCreateComponent} from './playlistes/playliste-create/playliste-create.component';
-import {PlaylisteListeComponent} from './playlistes/playliste-liste/playliste-liste.component';
-import {UserCreateComponent} from './users/user-create/user-create.component';
-import {UserListComponent} from './users/user-list/user-list.component';
-import {UsersComponent} from './users/users.component';
-import {ChaineCreateComponent} from './chaines/chaine-create/chaine-create.component';
-import {ChainesComponent} from './chaines/chaines.component';
-import {ChaineListComponent} from './chaines/chaine-list/chaine-list.component';
+import {AppRoutingModule, components} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
+import {MenuComponent} from './view/menu/menu.component';
+import {PageNotFoundedComponent} from './view/page-not-founded/page-not-founded.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideosComponent,
-    VideoCreateComponent,
-    VideoListeComponent,
-    PlaylistesComponent,
-    PlaylisteCreateComponent,
-    PlaylisteListeComponent,
-    UserCreateComponent,
-    UserListComponent,
-    UsersComponent,
-    ChaineCreateComponent,
-    ChainesComponent,
-    ChaineListComponent
+    components,
+    MenuComponent,
+    PageNotFoundedComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        FormsModule,
-        AppRoutingModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
+  ],
   providers: [],
-  bootstrap: [VideosComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

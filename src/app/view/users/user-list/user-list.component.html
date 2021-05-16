@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header bg-info text-dark">list des utilisateur </div>
+  <div class="card-body">
+    <table class="table table-hover table-striped">
+      <thead>
+      <th>ref</th>
+      <th>login</th>
+      <th>Password</th>
+      <th>delete or update</th>
+
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let u of users ; index as i">
+
+        <td>{{u.ref}}</td>
+        <td>{{u.login}}</td>
+        <td>{{u.password}}</td>
+
+        <td>
+          <span (click)="delete(i,u)"><i class=" fa fa-trash btn btn-danger"></i></span>
+          <span (click)="update(i,u)"><i class="fa fa-edit btn btn-warning"></i></span>
+        </td>
+        <td>
+          <button class="btn btn-link btn-sm fa fa-eye" (click)="findChaineByUserReference(u)"></button>
+        </td>
+
+
+      </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header bg-info text-dark">liste des chaîne associé</div>
+  <div class="card-body">
+    <table class="table table-hover table-striped">
+      <thead>
+      <th>ref</th>
+      <th>titre</th>
+      <th>nombreAbonnee</th>
+
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of user.chaines ">
+
+        <td>{{c.ref}}</td>
+        <td>{{c.titre}}</td>
+        <td>{{c.nombreAbonnee}}</td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

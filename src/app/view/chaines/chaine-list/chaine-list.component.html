@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">La list des chaine ajouter !</div>
+  <div class="card-header  bg-info text-dark ">La list des chaine ajouter !</div>
 
 
   <div class="card-body">
@@ -9,8 +9,6 @@
       <th>Titre</th>
       <th>Descreption</th>
       <th>NombreAbonnee</th>
-      <th>login</th>
-      <th>Password</th>
       <th>Action</th>
 
       </thead>
@@ -18,14 +16,9 @@
       <tr *ngFor="let c of chaines; index as i ">
         <td>{{c.ref}}</td>
         <td>{{c.titre}}</td>
-        <td>{{c.descreption}}</td>
         <td>{{c.nombreAbonnee}}</td>
-        <td>{{c.login}}</td>
-        <td>{{c.password}}</td>
+        <td>{{c.user}}</td>
 
-        <!--
-                <td>{{c.user}}</td>
-        -->
         <td><span (click)="delete(i)"><i class="fa fa-trash btn btn-danger"></i><</span></td>
         <td><span (click)="update(i,c)"><i class="fa fa-edit  btn btn-warning"></i><</span></td>
 

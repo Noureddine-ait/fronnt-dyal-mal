@@ -23,7 +23,7 @@ public update(index: number, playliste: Playliste){
     return this.playlisteService.playlistes;
   }
  ngOnInit(): void {
-    this.playlisteService.init();
+    this.playlisteService.findAll();
   }
 
 }

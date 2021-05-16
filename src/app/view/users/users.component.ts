@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../controller/model/user.model';
+import {UserService} from '../../controller/service/user.service';
 
 @Component({
   selector: 'app-users',
@@ -11,5 +13,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

@@ -13,6 +13,7 @@ export class VideoService {
   private _urlBase = 'http://localhost:8036';
   private _url = '/gestion-video/video';
   private index: number;
+  // tslint:disable-next-line:typedef
   public save() {
      if (this.video.id == null){
       this.http.post(this.urlBase + this.url + '/', this.video ).subscribe(
@@ -29,6 +30,7 @@ export class VideoService {
     }
      this.video = null;
   }
+  // tslint:disable-next-line:typedef
   public update(index: number, v: Video){
     this.video = this.cloneVideo(v);
     this.index = index;
@@ -82,7 +84,8 @@ export class VideoService {
   set videos(value: Array<Video>) {
     this._videos = value;
   }
-  public init(){
+  // tslint:disable-next-line:typedef
+  public findAll(){
 this.http.get<Array<Video>>('http://localhost:8036/gestion-video/video/').subscribe(
    data => {
       this.videos = data;
@@ -91,6 +94,7 @@ this.http.get<Array<Video>>('http://localhost:8036/gestion-video/video/').subscr
   }
 );
   }
+  // tslint:disable-next-line:typedef
   private cloneVideo(video: Video) {
     const myClone = new Video();
     myClone.ref = video.ref;

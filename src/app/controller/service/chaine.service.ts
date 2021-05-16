@@ -8,8 +8,8 @@ import {subscribeOn} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ChaineService {
-  private urlBase = 'http://localhost:8036';
-  private url = '/chaine-youtube/';
+  private _urlBase = 'http://localhost:8036';
+  private _url = '/chaine-youtube/chaine';
   private _chaine: Chaine;
   private _chaines: Array<Chaine>;
   private _indice: number;
@@ -23,26 +23,21 @@ export class ChaineService {
   // tslint:disable-next-line:typedef
   public save() {
     if (this.chaine.id == null) {
-      // this.chaine.id = this.chaines.length + 1;
-      this.http.post(this.urlBase + this.url + '/', this.chaine).subscribe(
+      const myChaine = this.cloneChaine(this.chaine);
+      console.log('myy user ' + myChaine);
+      this.http.post(this._urlBase + this._url + '/', this.chaine).subscribe(
         data => {
-          if (data > 0){
+          if (data > 0) {
             console.log(this.chaine);
-            const myClone = this.clone(this.chaine);
-            console.log(myClone);
-            // this.chaines.push(myClone);
-            this.findAll();
-          }else {
-            alert('erreur lors de la creation de la chaine code :' + data);
+            this.chaines.push(myChaine);
+          } else {
+            alert('echec !!' + data);
           }
         }
-
       );
-
-    } else {
-      this.chaines[this._indice] = this.clone(this.chaine);
+      this.chaine = null;
     }
-    this.chaine = null;
+
   }
 
   constructor(private http: HttpClient) {
@@ -50,15 +45,39 @@ export class ChaineService {
 
 // tslint:disable-next-line:typedef
   public findAll() {
-this.http.get<Array<Chaine>>(this.urlBase + this.url + '/').subscribe(
-  data => {
-    this.chaines = data ;
-  }, error => {
-    console.log(error);
-  }
-);
+    this.http.get<Array<Chaine>>(this._urlBase + this._url + '/').subscribe(
+      data => {
+        this.chaines = data;
+      }, error => {
+        console.log(error);
+      }
+    );
 
-    }
+  }
+
+  // tslint:disable-next-line:typedef
+  private cloneChaine(chaine: Chaine) {
+    const myClone = new Chaine();
+    myClone.ref = chaine.ref;
+    myClone.titre = chaine.titre;
+    myClone.nombreAbonnee = chaine.nombreAbonnee;
+    return myClone;
+  }
+
+
+  // tslint:disable-next-line:typedef
+  private clone(chaine: Chaine) {
+    const myClone = new Chaine();
+    myClone.id = chaine.id;
+    myClone.ref = chaine.ref;
+    myClone.titre = chaine.titre;
+    myClone.nombreAbonnee = chaine.nombreAbonnee;
+
+    return myClone;
+
+  }
+
+
   get chaine(): Chaine {
 
     if (this._chaine == null) {
@@ -85,22 +104,5 @@ this.http.get<Array<Chaine>>(this.urlBase + this.url + '/').subscribe(
   set chaines(value: Array<Chaine>) {
     this._chaines = value;
   }
-
-  // tslint:disable-next-line:typedef
-  private clone(chaine: Chaine) {
-    const myClone = new Chaine();
-    myClone.id = chaine.id;
-    myClone.ref = chaine.ref;
-    myClone.titre = chaine.titre;
-    myClone.descreption = chaine.descreption;
-    myClone.nombreAbonnee = chaine.nombreAbonnee;
-    myClone.login = chaine.login;
-    myClone.password = chaine.password;
-    /*myClone.user =  chaine.user;*/
-
-    return myClone;
-
-  }
-
 
 }

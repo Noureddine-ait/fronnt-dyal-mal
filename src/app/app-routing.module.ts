@@ -1,20 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {PlaylistesComponent} from './playlistes/playlistes.component';
-import {PlaylisteListeComponent} from './playlistes/playliste-liste/playliste-liste.component';
-import {PlaylisteCreateComponent} from './playlistes/playliste-create/playliste-create.component';
-import {BrowserModule} from '@angular/platform-browser';
+import {UserCreateComponent} from './view/users/user-create/user-create.component';
+import {UserListComponent} from './view/users/user-list/user-list.component';
+import {PageNotFoundedComponent} from './view/page-not-founded/page-not-founded.component';
+import {ChaineCreateComponent} from "./chaines/chaine-create/chaine-create.component";
+import {ChaineListComponent} from './chaines/chaine-list/chaine-list.component';
 
+export const components = [UserCreateComponent, UserListComponent, ChaineCreateComponent , ChaineListComponent ];
 const routes: Routes = [
-  {path: 'playlistes', children: [{path: 'playlistes/playliste-liste', component: PlaylisteListeComponent},
-      {path: 'playlistes/playliste-create', component: PlaylisteCreateComponent}] }
+  {path: '', component: components[0]},
+  {path: 'user-create', component: components[0]},
+  {path: 'user-list', component: components[1]},
+  {path: 'chaine-create', component: components[2]},
+  {path: 'chaine-list', component: components[3]} ,
+  {path: '**', component: PageNotFoundedComponent},
 ];
+
 
 @NgModule({
   declarations: [],
   imports: [RouterModule.forRoot(routes),
-    CommonModule ],
+    CommonModule],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -20,4 +20,5 @@ export class ChaineCreateComponent implements OnInit {
     get chaine(): Chaine {
       return  this.chaineService.chaine;
   }
+
 }

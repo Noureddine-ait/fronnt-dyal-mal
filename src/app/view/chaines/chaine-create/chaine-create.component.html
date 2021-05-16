@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header bg-warning text-dark"> Ajouter une chaine  </div>
+
+  <div class="card-body">
+
+    <div class="form-group">
+      <label >Ref</label>
+      <input type="text" class="form-control" [(ngModel)]="chaine.ref" >
+    </div>
+
+    <div class="form-group">
+      <label >Titre</label>
+      <input type="text" class="form-control" [(ngModel)]="chaine.titre" >
+    </div>
+
+    <div class="form-group">
+      <label >user</label>
+      <input type="text" class="form-control" [(ngModel)]="chaine.user" >
+    </div>
+
+
+    <div class="form-group">
+      <label >nombreAbonnee</label>
+      <input type="number" class="form-control" [(ngModel)]="chaine.nombreAbonnee" >
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <div class="card-footer">
+<button class="btn btn-outline-dark btn-block"(click)="save()">Valider </button>
+  </div>
+</div>
+
